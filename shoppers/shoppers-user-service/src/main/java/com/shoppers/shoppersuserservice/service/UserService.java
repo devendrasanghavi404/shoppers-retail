@@ -1,6 +1,7 @@
 package com.shoppers.shoppersuserservice.service;
 
 import com.shoppers.shoppersuserservice.dto.UserRequestDto;
+import com.shoppers.shoppersuserservice.model.Roles;
 import com.shoppers.shoppersuserservice.model.UserEntity;
 import com.shoppers.shoppersuserservice.repository.UserRepository;
 import lombok.Builder;
@@ -16,18 +17,16 @@ public class UserService implements UserDAO {
     @Autowired
     UserRepository userEntityRepository;
 
-//    public UserService() {
-//        super();
-//    }
 
     @Override
     public UserEntity saveUserEntity(UserRequestDto userDto) {
         UserEntity userEntity = new UserEntity();
+        System.err.println(userDto);
         userEntity.setUserId((long) userDto.getUserId());
         userEntity.setUserName(userDto.getUserName());
         userEntity.setFirstName(userDto.getFirstName());
         userEntity.setLastName(userDto.getLastName());
-        userEntity.setRoles(userDto.getRoles());
+        userEntity.setRoles(Roles.valueOf(userDto.getRoles()));
         userEntity.setEmail(userDto.getEmail());
         userEntity.setMobile(userDto.getMobile());
         userEntityRepository.save(userEntity);
@@ -50,7 +49,7 @@ public class UserService implements UserDAO {
         userFromRepo.setFirstName(updatedUser.getFirstName());
         userFromRepo.setLastName(updatedUser.getLastName());
         userFromRepo.setUserName(updatedUser.getUserName());
-        userFromRepo.setRoles(updatedUser.getRoles());
+        userFromRepo.setRoles(Roles.valueOf(updatedUser.getRoles()));
         userFromRepo.setMobile(updatedUser.getMobile());
         userEntityRepository.save(userFromRepo);
         return userFromRepo;

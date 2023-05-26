@@ -17,6 +17,7 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String userName;
+    @Enumerated(EnumType.ORDINAL)
     private Roles roles;
     private String email;
     private String mobile;
@@ -36,18 +37,6 @@ public class UserEntity {
         this.mobile = mobile;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", roles='" + roles + '\'' +
-                ", email='" + email + '\'' +
-                ", mobile='" + mobile + '\'' +
-                '}';
-    }
 
     public Long getUserId() {
         return userId;
@@ -103,5 +92,19 @@ public class UserEntity {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", roles=" + roles +
+                ", email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
+                '}';
     }
 }

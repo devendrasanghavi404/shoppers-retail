@@ -1,6 +1,5 @@
 package com.shoppers.shoppersuserservice.dto;
 
-import com.shoppers.shoppersuserservice.model.Roles;
 
 public class UserRequestDto {
 
@@ -9,11 +8,12 @@ public class UserRequestDto {
     private String firstName;
     private String lastName;
     private String userName;
-    private Roles roles;
+    private String roles;
     private String email;
     private String mobile;
 
-    public UserRequestDto(String firstName, String lastName, String userName, Roles roles, String email, String mobile) {
+    public UserRequestDto(int userId, String firstName, String lastName, String userName, String roles, String email, String mobile) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -25,21 +25,23 @@ public class UserRequestDto {
     public UserRequestDto() {
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
     public String getFirstName() {
         return firstName;
     }
-
 
     public String getLastName() {
         return lastName;
     }
 
-
     public String getUserName() {
         return userName;
     }
 
-    public Roles getRoles() {
+    public String getRoles() {
         return roles;
     }
 
@@ -51,19 +53,16 @@ public class UserRequestDto {
         return mobile;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
     @Override
     public String toString() {
         return "UserRequestDto{" +
-                "firstName='" + firstName + '\'' +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", userName='" + userName + '\'' +
+                ", roles='" + roles + '\'' +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
                 '}';
     }
-
 }
