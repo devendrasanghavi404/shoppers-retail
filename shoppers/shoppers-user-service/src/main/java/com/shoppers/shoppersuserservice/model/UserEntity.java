@@ -17,18 +17,21 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String userName;
+    private Roles roles;
     private String email;
     private String mobile;
+
 
     public UserEntity() {
         super();
     }
 
-    public UserEntity(Long userId, String firstName, String lastName, String userName, String email, String mobile) {
+    public UserEntity(Long userId, String firstName, String lastName, String userName, Roles roles, String email, String mobile) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
+        this.roles = roles;
         this.email = email;
         this.mobile = mobile;
     }
@@ -40,6 +43,7 @@ public class UserEntity {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", userName='" + userName + '\'' +
+                ", roles='" + roles + '\'' +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
                 '}';
@@ -75,6 +79,14 @@ public class UserEntity {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles role) {
+        this.roles = roles;
     }
 
     public String getEmail() {

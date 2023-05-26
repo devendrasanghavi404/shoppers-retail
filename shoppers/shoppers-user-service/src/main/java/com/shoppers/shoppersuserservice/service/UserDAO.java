@@ -14,7 +14,7 @@ public interface UserDAO {
 
     UserEntity getUser(String email);
 
-    UserEntity updateUser(String email, UserEntity updatedUser);
+    UserEntity updateUser(String email, UserRequestDto updatedUser);
 
     void deleteUser(String email);
 

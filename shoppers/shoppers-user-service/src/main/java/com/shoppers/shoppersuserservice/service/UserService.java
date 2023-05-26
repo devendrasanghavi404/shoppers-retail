@@ -16,9 +16,9 @@ public class UserService implements UserDAO {
     @Autowired
     UserRepository userEntityRepository;
 
-    public UserService() {
-        super();
-    }
+//    public UserService() {
+//        super();
+//    }
 
     @Override
     public UserEntity saveUserEntity(UserRequestDto userDto) {
@@ -27,6 +27,7 @@ public class UserService implements UserDAO {
         userEntity.setUserName(userDto.getUserName());
         userEntity.setFirstName(userDto.getFirstName());
         userEntity.setLastName(userDto.getLastName());
+        userEntity.setRoles(userDto.getRoles());
         userEntity.setEmail(userDto.getEmail());
         userEntity.setMobile(userDto.getMobile());
         userEntityRepository.save(userEntity);
@@ -44,11 +45,12 @@ public class UserService implements UserDAO {
     }
 
     @Override
-    public UserEntity updateUser(String email, UserEntity updatedUser) {
+    public UserEntity updateUser(String email, UserRequestDto updatedUser) {
         UserEntity userFromRepo = userEntityRepository.findByEmail(email);
         userFromRepo.setFirstName(updatedUser.getFirstName());
         userFromRepo.setLastName(updatedUser.getLastName());
         userFromRepo.setUserName(updatedUser.getUserName());
+        userFromRepo.setRoles(updatedUser.getRoles());
         userFromRepo.setMobile(updatedUser.getMobile());
         userEntityRepository.save(userFromRepo);
         return userFromRepo;

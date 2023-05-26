@@ -1,5 +1,7 @@
 package com.shoppers.shoppersuserservice.dto;
 
+import com.shoppers.shoppersuserservice.model.Roles;
+
 public class UserRequestDto {
 
 
@@ -7,13 +9,15 @@ public class UserRequestDto {
     private String firstName;
     private String lastName;
     private String userName;
+    private Roles roles;
     private String email;
     private String mobile;
 
-    public UserRequestDto(String firstName, String lastName, String userName, String email, String mobile) {
+    public UserRequestDto(String firstName, String lastName, String userName, Roles roles, String email, String mobile) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
+        this.roles = roles;
         this.email = email;
         this.mobile = mobile;
     }
@@ -35,16 +39,17 @@ public class UserRequestDto {
         return userName;
     }
 
+    public Roles getRoles() {
+        return roles;
+    }
 
     public String getEmail() {
         return email;
     }
 
-
     public String getMobile() {
         return mobile;
     }
-
 
     public int getUserId() {
         return userId;
