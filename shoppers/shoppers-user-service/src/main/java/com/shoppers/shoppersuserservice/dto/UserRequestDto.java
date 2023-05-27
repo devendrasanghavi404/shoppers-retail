@@ -1,8 +1,9 @@
 package com.shoppers.shoppersuserservice.dto;
 
 
-public class UserRequestDto {
+import java.io.Serializable;
 
+public class UserRequestDto implements Serializable {
 
     private int userId;
     private String firstName;
@@ -42,7 +43,7 @@ public class UserRequestDto {
     }
 
     public String getRoles() {
-        return roles;
+        return roles.toUpperCase();
     }
 
     public String getEmail() {

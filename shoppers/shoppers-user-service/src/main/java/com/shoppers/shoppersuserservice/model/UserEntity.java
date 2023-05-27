@@ -4,11 +4,12 @@ package com.shoppers.shoppersuserservice.model;
 import lombok.Builder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Builder
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity implements Serializable {
 
 
     @Id
@@ -17,7 +18,7 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String userName;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Roles roles;
     private String email;
     private String mobile;

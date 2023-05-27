@@ -4,13 +4,14 @@ import com.shoppers.shoppersuserservice.dto.UserRequestDto;
 import com.shoppers.shoppersuserservice.model.UserEntity;
 import com.shoppers.shoppersuserservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/v1", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class UserController {
 
     @Autowired

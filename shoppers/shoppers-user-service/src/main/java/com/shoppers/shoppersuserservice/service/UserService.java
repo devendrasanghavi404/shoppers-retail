@@ -1,9 +1,11 @@
 package com.shoppers.shoppersuserservice.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoppers.shoppersuserservice.dto.UserRequestDto;
 import com.shoppers.shoppersuserservice.model.Roles;
 import com.shoppers.shoppersuserservice.model.UserEntity;
 import com.shoppers.shoppersuserservice.repository.UserRepository;
+import com.shoppers.shoppersuserservice.dao.UserDAO;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +28,19 @@ public class UserService implements UserDAO {
         userEntity.setUserName(userDto.getUserName());
         userEntity.setFirstName(userDto.getFirstName());
         userEntity.setLastName(userDto.getLastName());
-        userEntity.setRoles(Roles.valueOf(userDto.getRoles()));
+        ObjectMapper mapper = new ObjectMapper();
+        String role = userDto.getRoles();
+        if(role.equals("USER")){
+
+            userEntity.setRoles(Roles.USER);
+        }
+        else{
+            userEntity.setRoles(Roles.ADMIN);
+        }
+
         userEntity.setEmail(userDto.getEmail());
         userEntity.setMobile(userDto.getMobile());
+        System.err.println(userEntity);
         userEntityRepository.save(userEntity);
         return userEntity;
     }

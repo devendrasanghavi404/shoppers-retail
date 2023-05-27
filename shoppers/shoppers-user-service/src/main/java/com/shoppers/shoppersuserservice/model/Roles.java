@@ -1,6 +1,8 @@
 package com.shoppers.shoppersuserservice.model;
 
-public enum Roles {
+import java.io.Serializable;
+
+public enum Roles implements Serializable {
     USER,
     ADMIN;
 

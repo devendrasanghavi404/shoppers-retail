@@ -1,4 +1,4 @@
-package com.shoppers.shoppersuserservice.service;
+package com.shoppers.shoppersuserservice.dao;
 
 
 import com.shoppers.shoppersuserservice.dto.UserRequestDto;
