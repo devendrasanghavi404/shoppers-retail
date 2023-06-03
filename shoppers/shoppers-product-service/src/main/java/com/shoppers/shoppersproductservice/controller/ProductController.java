@@ -14,35 +14,34 @@ import java.util.List;
 @RequestMapping(value = "/api/v1", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class ProductController {
 
-        @Autowired
-        ProductService productService;
+    @Autowired
+    ProductService productService;
 
 
-        @PostMapping(value="product")
-        public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDto productDto){
-            return ResponseEntity.ok(productService.createProduct(productDto));
-        }
+    @PostMapping(value = "product")
+    public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDto productDto) {
+        return ResponseEntity.ok(productService.createProduct(productDto));
+    }
 
-        @GetMapping(value="products")
-        public ResponseEntity<List<Product>> fetchAllProducts(){
-            List<Product> productList= productService.fetchProducts();
-            return ResponseEntity.ok(productList);
-        }
+    @GetMapping(value = "products")
+    public ResponseEntity<List<Product>> fetchAllProducts() {
+        List<Product> productList = productService.fetchProducts();
+        return ResponseEntity.ok(productList);
+    }
 
-        @PutMapping(value = "/product/{productId}")
-        public ResponseEntity<Product> updateProduct(@PathVariable("productId") Long productId, @RequestBody ProductRequestDto productDto) {
-            return ResponseEntity.ok(productService.updateProduct(productId, productDto));
-        }
+    @PutMapping(value = "/product/{productId}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("productId") Long productId, @RequestBody ProductRequestDto productDto) {
+        return ResponseEntity.ok(productService.updateProduct(productId, productDto));
+    }
 
     @DeleteMapping("/products/{id}/{name}")
     public ResponseEntity<Product> deleteProduct(@PathVariable Long id, @PathVariable String name) {
-        Product productToDelete = productService.deleteProduct(id,name);
+        Product productToDelete = productService.deleteProduct(id, name);
         return ResponseEntity.ok(productToDelete);
 
-        }
-
-
-
     }
+
+
+}
 
 
