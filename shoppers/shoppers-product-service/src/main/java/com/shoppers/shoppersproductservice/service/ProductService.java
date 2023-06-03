@@ -29,14 +29,13 @@ public class ProductService {
                 .build();
     }
 
-    public List<Product> fetchProducts(){
+    public List<Product> fetchProducts() {
         return productRepository.findAll();
     }
 
-    public Product updateProduct(Long id, ProductRequestDto pdto)
-    {
+    public Product updateProduct(Long id, ProductRequestDto pdto) {
         Product productFromRepo = productRepository.findById(id).get();
-        return  productFromRepo.builder()
+        return productFromRepo.builder()
                 .productId(pdto.getProductId())
                 .productName(pdto.getProductName())
                 .description(pdto.getDescription())
@@ -50,13 +49,13 @@ public class ProductService {
                 .build();
     }
 
-    public Product deleteProduct(Long id, String name){
-        Product productToDelete = productRepository.findByIdAndName(id,name);
+    public Product deleteProduct(Long id, String name) {
+        Product productToDelete = productRepository.findByIdAndName(id, name);
         if (productToDelete != null) {
             productRepository.delete(productToDelete);
             return productToDelete;
         } else {
-            throw new IllegalArgumentException("Product not found with id and name: " + id+":"+name);
+            throw new IllegalArgumentException("Product not found with id and name: " + id + ":" + name);
         }
     }
 }
