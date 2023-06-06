@@ -15,7 +15,7 @@ public class ProductService {
     ProductRepository productRepository;
 
     public Product createProduct(ProductRequestDto pdto) {
-        return Product.builder()
+        Product savedProduct =  Product.builder()
                 .productId(pdto.getProductId())
                 .productName(pdto.getProductName())
                 .description(pdto.getDescription())
@@ -27,6 +27,9 @@ public class ProductService {
                 .imageURL(pdto.getImageURL())
                 .brand(pdto.getBrand())
                 .build();
+        System.out.println(savedProduct);
+        productRepository.save(savedProduct);
+        return savedProduct;
     }
 
     public List<Product> fetchProducts() {

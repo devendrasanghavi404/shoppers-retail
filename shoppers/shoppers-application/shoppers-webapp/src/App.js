@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PaymentForm from './components/PaymentForm/PaymentForm';
 import './App.css';
+import Login from './components/Login/Login';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
         {/* <Header/>
         <Login/> */}
         <PaymentForm />
+        <Login/>
       </div>
     );
   }

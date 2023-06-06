@@ -14,7 +14,7 @@ public class ProductRequestDto {
     private String updatedAt;
     private String status;
     private String imageURL;
-    private String Brand;
+    private String brand;
 
     public ProductRequestDto(Long productId, String productName, String description, String category, Double price, String createdAt, String updatedAt, String status, String imageURL, String brand) {
         this.productId = productId;
@@ -26,7 +26,7 @@ public class ProductRequestDto {
         this.updatedAt = updatedAt;
         this.status = status;
         this.imageURL = imageURL;
-        Brand = brand;
+        this.brand = brand;
     }
 
     public ProductRequestDto() {
@@ -69,7 +69,7 @@ public class ProductRequestDto {
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ProductRequestDto {
                 ", updatedAt='" + updatedAt + '\'' +
                 ", status='" + status + '\'' +
                 ", imageURL='" + imageURL + '\'' +
-                ", Brand='" + Brand + '\'' +
+                ", Brand='" + brand + '\'' +
                 '}';
     }
 }
