@@ -2,6 +2,7 @@ package com.shoppers.shoppersproductservice.controller;
 
 import com.shoppers.shoppersproductservice.dto.ProductRequestDto;
 import com.shoppers.shoppersproductservice.model.Product;
+import com.shoppers.shoppersproductservice.model.SequenceGeneratorService;
 import com.shoppers.shoppersproductservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,6 +18,8 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
 
     @PostMapping(value = "product")
     public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDto productDto) {

@@ -1,27 +1,33 @@
 package com.shoppers.shoppersproductservice.model;
 
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
 
 @Getter
 @Setter
 @Builder
-@Entity
-@Table(name = "product")
+@Document(collection = "products")
 public class Product {
+
+    @Transient
+    public static final String SEQUENCE_NAME = "product_sequence";
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
     private String productName;
     private String description;
     private String category;
     private Double price;
-    private String createdAt;
-    private String updatedAt;
+
+    private Date createdAt;
+
+    private Date updatedAt;
     private String status;
     private String imageURL;
     private String brand;
@@ -29,7 +35,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long productId, String productName, String description, String category, Double price, String createdAt, String updatedAt, String status, String imageURL, String brand) {
+    public Product(Long productId, String productName, String description, String category, Double price, Date createdAt, Date updatedAt, String status, String imageURL, String brand) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
@@ -82,19 +88,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 

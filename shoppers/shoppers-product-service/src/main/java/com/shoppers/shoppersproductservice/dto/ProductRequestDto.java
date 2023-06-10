@@ -1,6 +1,6 @@
 package com.shoppers.shoppersproductservice.dto;
 
-import lombok.Builder;
+import java.util.Date;
 
 
 public class ProductRequestDto {
@@ -10,13 +10,13 @@ public class ProductRequestDto {
     private String description;
     private String category;
     private Double price;
-    private String createdAt;
-    private String updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
     private String status;
     private String imageURL;
     private String brand;
 
-    public ProductRequestDto(Long productId, String productName, String description, String category, Double price, String createdAt, String updatedAt, String status, String imageURL, String brand) {
+    public ProductRequestDto(Long productId, String productName, String description, String category, Double price, Date createdAt, Date updatedAt, String status, String imageURL, String brand) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
@@ -52,11 +52,11 @@ public class ProductRequestDto {
         return price;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
