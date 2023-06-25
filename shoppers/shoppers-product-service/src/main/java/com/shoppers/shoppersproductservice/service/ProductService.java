@@ -15,7 +15,7 @@ public class ProductService {
     ProductRepository productRepository;
 
     public Product createProduct(ProductRequestDto pdto) {
-        Product savedProduct =  Product.builder()
+        Product savedProduct = Product.builder()
                 .productId(pdto.getProductId())
                 .productName(pdto.getProductName())
                 .description(pdto.getDescription())
