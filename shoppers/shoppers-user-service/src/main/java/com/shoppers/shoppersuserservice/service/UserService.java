@@ -19,7 +19,6 @@ public class UserService implements UserDAO {
     @Autowired
     UserRepository userEntityRepository;
 
-
     @Override
     public UserEntity saveUserEntity(UserRequestDto userDto) {
         UserEntity userEntity = new UserEntity();

@@ -17,29 +17,28 @@ import java.util.Collections;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-public class AppUser implements UserDetails {
+    public class AppUser implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
-    private String name;
-    private String username;
-    private String password;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String password;
     @Enumerated(EnumType.STRING)
     private Roles role;
-    private Boolean locked;
-    private Boolean enabled;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
-    public AppUser(String name, String username, String password, String email, Roles role, Boolean locked, Boolean enabled) {
-        this.name = name;
-        this.username = username;
-        this.password = password;
+
+    public AppUser(String firstName, String lastName, String email, String password, Roles role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.role = role;
-        this.locked = locked;
-        this.enabled = enabled;
     }
 
     @Override
@@ -55,7 +54,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
@@ -77,4 +76,6 @@ public class AppUser implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
+
 }
